@@ -1,0 +1,391 @@
+/* Police Nunito installée dans le projet */
+@import '@fontsource/nunito';
+@import '@fontsource/nunito/700.css';
+@import '@fontsource/nunito/800.css';
+
+/* Couleurs du thème, réutilisées partout */
+:root {
+  --bg: #fff3d1;
+  --surface: #ffffff;
+  --text: #3a2418;
+  --muted: #7a5a45;
+  --yellow: #f6c344;
+  --orange: #ec8a3b;
+  --red: #e05a47;
+  --red-dark: #c4473a;
+  --border: #f3d9a8;
+  --gradient: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+  --shadow: 0 4px 14px rgba(160, 90, 40, 0.15);
+  --radius: 14px;
+
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+}
+
+/* Page en colonne sur toute la hauteur : le footer reste en bas */
+#root > div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header et footer : dégradé jaune, orange, rouge */
+header,
+footer {
+  background: var(--gradient);
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  box-shadow: var(--shadow);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+/* Liens en forme de pastille */
+nav a {
+  padding: 8px 18px;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background-color 0.2s;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+footer {
+  padding: 18px;
+  text-align: center;
+  font-weight: 700;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Contenu central */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+/* Garde les retours à la ligne des textes d'article */
+main p {
+  white-space: pre-line;
+}
+
+a {
+  color: var(--red-dark);
+  font-weight: 700;
+}
+
+/* Champs et boutons */
+input,
+select,
+textarea {
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--text);
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+
+button {
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  background-color: var(--orange);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+button:hover {
+  filter: brightness(0.92);
+}
+
+/* Formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 640px;
+  padding: 28px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 800;
+}
+
+textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+form button {
+  align-self: flex-start;
+}
+
+/* Message d'erreur sous un champ */
+.error {
+  margin: -6px 0 0;
+  font-weight: 700;
+  color: var(--red-dark);
+}
+
+/* Liste des articles */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 16px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.search-bar input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.article-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Carte avec une bande orange en haut, qui se soulève au survol */
+.article-card {
+  display: block;
+  padding: 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 400;
+  background-color: var(--surface);
+  border-top: 6px solid var(--orange);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+}
+
+.article-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.article-card p {
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+/* Page d'un article */
+.actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.danger {
+  color: white;
+  background-color: var(--red-dark);
+}
+
+/* Modale */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(58, 36, 24, 0.55);
+}
+
+.modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-sizing: border-box;
+  background-color: var(--bg);
+  border-radius: var(--radius);
+}
+
+.modal form {
+  box-shadow: none;
+}
+
+/* Bouton Annuler : contour au lieu d'un fond plein */
+.secondary {
+  margin-top: 14px;
+  background-color: transparent;
+  border: 2px solid var(--muted);
+}
+
+/* Listes déroulantes personnalisées (Chrome, Edge) */
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
+select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* Flèche orange qui pivote quand la liste est ouverte */
+select::picker-icon {
+  color: var(--orange);
+  transition: rotate 0.2s;
+}
+
+select:open::picker-icon {
+  rotate: 180deg;
+}
+
+/* Liste qui s'ouvre au clic */
+::picker(select) {
+  margin-top: 6px;
+  padding: 6px;
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+option {
+  padding: 8px 12px;
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+option:hover,
+option:focus {
+  background-color: #ffe7c7;
+}
+
+/* Option actuellement choisie */
+option:checked {
+  font-weight: 800;
+  background-color: #ffd9a8;
+}
+
+option::checkmark {
+  color: var(--red-dark);
+}
+
+/* Bouton du thème dans la barre de navigation */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Thème sombre : seules les variables de couleur changent */
+.dark {
+  --bg: #241812;
+  --surface: #36261d;
+  --text: #fbeee0;
+  --muted: #d4b9a3;
+  --border: #5a4030;
+  --orange: #e98a3f;
+  --red-dark: #e0604c;
+  --gradient: linear-gradient(90deg, #c9952a, #c4652a, #b0402f);
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+/* En sombre, texte foncé sur les boutons orange pour rester lisible */
+.dark button {
+  color: #2a1a10;
+}
+
+.dark .danger {
+  color: white;
+}
+
+.dark .secondary,
+.dark .theme-toggle {
+  color: var(--text);
+}
+
+.dark .theme-toggle {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.dark option:hover,
+.dark option:focus {
+  background-color: #5a4030;
+}
+
+.dark option:checked {
+  background-color: #6e4a30;
+}
